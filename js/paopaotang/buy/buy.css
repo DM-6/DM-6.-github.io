@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.containner{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    border: 1px solid red;
+}
+.goodsnum{
+    margin-left: 30px;
+}
+.bd{
+    width: 400px;
+    height: 100px;
+    margin: 30px 0;
+    border:1px solid grey;
+    display: inline-block;
+}
