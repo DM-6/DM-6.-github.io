@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100vh;
+    overflow: hidden;
+}
+.page {
+    height: 100%;
+    background: #282D2C;
+    overflow: hidden;
+}
+.shake-img {
+    animation: rotating .8s linear infinite;
+}
+.hd{
+    width: 10rem;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes rotating{
+    0%{
+        /* 变形 */
+        transform: rotate(0) rotateY(-20deg);
+    }
+    50%{
+        transform: rotate(20deg) rotateY(-20deg);
+    }
+    100%{
+        transform: rotate(0deg) rotateY(-20deg);
+    }
+}
+.spinner {
+    width: 2.6666rem;
+    animation: spin .8s linear infinite;
+}
+.bd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes spin{
+    0%{
+        /* 变形 */
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.box{
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 7.58rem;
+    height: 1.8rem;
+    /* background: #DDD; */
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 0.2rem;
+    border-radius: 10px;
+    border: 1px solid #4d5251;
+}
+.head-img{
+    width: 1.333333rem;
+    height: 1.333333rem;
+    margin: .1rem;
+    border: 1px solid yellow;
+}
+.head-img img{
+    width: 100%;
+    height: auto;
+}
+.desc{
+    margin-left: 0.5rem;
+}

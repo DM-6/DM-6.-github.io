@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: rgb(95,95,96); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(95,95,96,1) 0%, rgba(83,94,91,1) 30%, rgba(30,69,86,1) 72%, rgba(9,66,83,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(95,95,96,1) 0%,rgba(83,94,91,1) 30%,rgba(30,69,86,1) 72%,rgba(9,66,83,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(95,95,96,1) 0%,rgba(83,94,91,1) 30%,rgba(30,69,86,1) 72%,rgba(9,66,83,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5f5f60', endColorstr='#094253',GradientType=0 ); /* IE6-9 */
+    copy
+}
+.hd{
+    width: 9.6rem;
+    height: 5.786667rem;
+    line-height: 5.786667rem;
+    text-align: center;
+}
+.hd h4{
+    font-size: .426667rem;
+    color: white;
+}
+.box{
+    width: 7.05555555rem;
+    margin: 0 auto;
+    font-size: 0;
+}
+.box a {
+    width: 1.61111111rem;
+    height: 1.61111111rem;
+    border-radius: 50%;
+    border: 1px solid white;
+    display:inline-block;
+    margin-right: 1.11111111rem;
+    margin-bottom: 1.11111111rem;
+    font-size: 22px;
+    text-align:center;
+    padding-top: .36rem;
+    text-decoration: none;
+    color: white;
+}
+.bd a{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.box a:hover{
+    background: white;
+}
+.zero{
+    margin-left: 2.76rem;
+}
+.box a:nth-child(3n){
+    margin-right: 0;
+}
+.ft{
+    width: 9.6rem;
+    height: .666667rem;
+    font-size: .426667rem;
+    line-height: .666667rem;
+    margin: .24rem;
+}
+.ft a{
+    font-size: .426667rem;
+    color: white;
+}
+.emergency-call{
+    float: left;
+    text-decoration: none;
+}
+.cancel{
+    float: right;
+    text-decoration: none;
+}
+ /* .bd{
+    width: 1.61111111rem;
+    height: 1.61111111rem;
+    border: 1px solid red;
+    border-radius: 50%;
+}  */
+/* plus 1rem = 宽度/10
+    rem 去做大小 就可以信赖
+    只要在所有设备上都保证rem 与设备宽度之间的关系就可以放心使用rem了 */

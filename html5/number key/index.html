@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解锁键盘</title>
+    <link rel="stylesheet" href="./index.css">
+    <script>
+    // 所有CSS之前，我先来决定html font-size 应该是多少？  1rem = 设备宽度/10
+
+    // 立即执行函数
+    //   找到html   window是全局
+    (function(w){
+        let s = w.document;
+        let html = s.documentElement;
+        // console.log(html.clientWidth);
+        let colWidth = html.clientWidth/10
+        html.style.fontSize = colWidth + 'px';
+    })(window)
+    </script>
+</head>
+<body>
+    <div class="containner">
+        <div class="hd">
+            <h4>输入密码</h4>
+        </div>
+        <div class="bd">
+            <div class="box">
+                <a href="" class="number">1</a>
+                <a href="" class="number">2</a>
+                <a href="" class="number">3</a>
+                <a href="" class="number">4</a>
+                <a href="" class="number">5</a>
+                <a href="" class="number">6</a>
+                <a href="" class="number">7</a>
+                <a href="" class="number">8</a>
+                <a href="" class="number">9</a>
+                <a href="" class="number zero">0</a>
+            </div>
+        </div>
+        <div class="ft">
+            <a href="" class="emergency-call">紧急呼叫</a>
+            <a href="" class="cancel">取消</a>
+        </div>
+    </div>
+</body>
+</html>

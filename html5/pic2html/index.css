@@ -1,0 +1,50 @@
+*{
+    margin: 10px;
+    padding: 0;
+}
+
+h2{
+   color:#168558; 
+   font-family:Microsoft JhengHei;
+   font-size: 30px;
+}
+.pl{
+    color: #000;
+    font-size: 26px;
+}
+.pl a{
+    color: #2C7BAC;
+    text-decoration: none;
+}
+.movie-item{
+   margin: 10px;
+   float: left;
+   /* border: 2px solid red; */
+}
+li{
+    list-style: none;
+}
+.title{
+    text-align: center;
+    font-size: 25px;
+}
+.title a{
+    text-decoration: none;
+    color: #000;
+}
+.rating i{
+    color: #DF8F23;
+    font-size: 25px;
+}
+.btn-link{
+    display: block;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #1D8AD0;
+    color: #ffffff;
+}

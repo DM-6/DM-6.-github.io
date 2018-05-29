@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>摇一摇</title>
+    <script>
+        (function (w) {
+            let s = w.document;
+            let r = s.documentElement;
+            let colWidth = r.clientWidth / 10; 
+            console.log(colWidth);
+            r.style.fontSize = colWidth + 'px';
+        })(window)
+    </script>
+    <!-- <script>
+        let w = window.document;
+        let i = w.documentElement;
+        let scrWidth = i.clientWidth/10;
+        i.style.fontSize=scrWidth+'px';
+    </script> -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="page">
+        <div class="hd rotate">
+            <img class="shake-img" src="./images/hand.png" alt="摇一摇图标">
+        </div>
+        <div class="bd">
+            <img class="spinner" src="./images/spinner.png" alt="加载">
+        </div>
+        <div class="ft">
+            <div class="box">
+                <div class="head-img">
+                    <img class="me" src="./images/me.jpg" alt="头像">
+                </div>
+                <div class="desc">
+                    <p>摇晃结果</p>
+                    <p>恭喜你</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
