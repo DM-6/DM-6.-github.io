@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin重叠</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        color: #ff5555;
+        background: #ffcccc;
+        width: 200px;
+        line-height: 100px;
+        text-align: center;
+        margin: 100px;
+    }
+    .wrap{
+        overflow: hidden;
+    }
+    .wrap p{
+        margin-top: 150px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+    BFC: Block Formatting Context 块级格式化上下文
+    文档  块block 在页面上占据自己的位置
+    新的BFC overflow:hidden(不为visisble) 新的空间 
+    告诉浏览器 外面的环境影响不到我，重新进行block，formatting 布局和定位
+    核心是 新的BFC 给出了新的不受外界影响的块级格式化环境 
+    -->
+    <!-- 
+    定位 position
+    广义的定位 块级元素：垂直方向的上下定位  行内元素：水平方向的左右定位，由内容决定
+    float 浮动  在一行的左边或者一行的右边定位
+    flex 弹性布局
+    position 狭义的定位 
+    -->
+    <!-- BFC 重建一个上下文环境 -->
+    <p>廖总真有钱</p>
+    <!-- 1、 根元素会创建一个BFC环境 -->
+    <!-- 原来两个p 都在根body下 这就是相同的上下文环境 BFC  -->
+    <!-- .wrap并没有能力创建一个BFC -->
+    <div class="wrap">
+        <p>发哥女朋友真漂亮</p>
+    </div>
+</body>
+</html>
