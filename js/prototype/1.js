@@ -53,7 +53,7 @@ Person.prototype = {
 function Author(name, books){
     // 新的构造函数
     Person.call(this.name);
-    this.boos = books;
+    this.books = books;
 }
 // 得到Person的prototype
 extend(Author,Person);
