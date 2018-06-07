@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>City Search</title>
+    <link rel="stylesheet" href="./css.css">
+</head>
+<body>
+    <!-- <div class="box"></div> -->
+    <form action="" class="search-form">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+    </form>
+    <script>
+        // 要匹配城市，需要城市的数据源，不在本地，而在服务器上，从服务器请求数据
+        // 城市的数据在哪？ 资源  在web上暴露资源的方式：URL （API）
+        //  1 资源
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+        //  2  引用资源，从远程到本地 BS 计算在本地
+        // 去取要花路上的时间，then 等你拿来了
+        const cities = [];
+        fetch(endpoint)
+        //    拿到了服务的数据块 json化一下，将数据变成json格式
+            .then(blob => blob.json())
+            // 一切就绪
+            .then(data => {
+                console.log(data)
+                cities.push(...data)
+            }) 
+        // 找到input元素 不会变的，就在那，定义为常量  var:es5的定义
+        function findMatches(wordToMatch,cities){
+            //完成匹配
+            return cities.filter(city => {
+                // 条件 true 要的，false 不要的
+                // json 点操作运算符
+                const regex = new RegExp(wordToMatch,'gi');
+                return city.city.match(regex);
+            })
+            // console.log(worldToMatch,cities)
+        }
+        function displayMatches(){
+            // console.log(this.value)
+            // cities 过滤前的数组   过滤后的数组 match -> this.value
+            // 过滤任务，封闭成一个函数
+            const matchArray = findMatches(this.value,cities)
+            console.log(matchArray)
+            const html = matchArray.map(city => {
+                return `
+                    <li>
+                       <span class="name">${city.city}</span>
+                       <span>${city.population}</span>
+                    <li>
+                `
+            })
+
+            document.querySelector('.suggestions') .innerHTML = html
+        }
+        const serchInput = document.querySelector('.search');
+        // console.log(searchInput);
+        // 事件是js，事件类型keyup 注册键盘事件，事件发生时，交给回调函数处。
+        serchInput.addEventListener('keyup',displayMatches);
+    </script>
+</body>
+</html>

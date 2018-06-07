@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise es6 异步当家花旦</title>
+</head>
+<body>
+    <script>
+        // // console.log('开始了');
+        // // fetch('https://wesbos.com/wp-json/wp/v2/posts')
+        // // .then(function(res){
+        // //     console.log('A');
+        // // });
+        // // fetch('https://data.ratp.fr/api/datasets/1.0/search/?q=paris')
+        // // .then(function(res){
+        // //     console.log('B');
+        // // })
+        // // // 等到异步A和异步B发生之后，再执行
+        // // console.log('C');
+        // // // 顺序执行？ JS执行顺序不再同步
+        // // // 因为异步，所以js的执行顺序得不到保证
+        // // // A -> B -> C
+
+        // // 许下诺言，先好好写代码，找到工作之后一定回来找你
+        // // 对未来会发生的事情
+        // // 将要耗时的事情，交给promise吧
+        // // 解决 reject 拒绝
+        // const p = new Promise((resolve,reject) => {
+        //     console.log('A');
+        //     setTimeout(() => {
+        //         // 数据查询  mysql,读取文件,定时任务
+        //         // console.log('A');
+        //         // resolve('A is over');
+        //         reject('失败的原因');
+        //     },2000)
+        // });
+        // // 代码执行顺序在手
+        // p.then((res) => {
+        //     console.log(res);
+        // }).catch(e => {
+        //     // console.log('不好意思');
+        //     console.log(e);
+        // })
+        // .then
+        // // B 如何安排？  A发生完之后B发生，最后交给C     ...
+        // // A 很长时间 =>  C(A)
+        // // 强制代码的执行顺序，让他可以同步执行
+        // // promise 让异步的事情封装到内部,使得同步执行
+        // // promise 提供了两个场景  resolve:兑现  reject:拒绝
+        // // promise 可以帮我们处理有复杂任务时的调度
+
+        // fetch  执行后返回的一个promise
+        // 两件异步事，发生在不确定的时间  Promise
+        // const postsPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
+        // postsPromise.then()
+        const streetCarsPromise = fetch('https://data.ratp.fr/api/datasets/1.0/search/?q=paris');
+        // js 不会为异步停留
+        // 最晚的那个执行完，A,B 结果 ,再执行C
+        // console.log('C');
+        Promise
+          .all([streetCarsPromise])
+          .then(responses => {
+            //   console.log(responses);
+            return Promise.all(responses.map(
+                res => res.json()
+            ))
+          })
+          .then(responses => {
+              console.log(responses);
+          })
+    </script>
+</body>
+</html>
