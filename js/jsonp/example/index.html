@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+    <!-- script标签可以访问外部跨域脚本或地址，改造一下后端接口，实现jsonp，json with padding，返回的数据，callback(data)封装一下 callback返回   -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function ajax(params){
+            params = params || {};
+            params.data = params.data || {};
+            var json = params.jsonp ? jsonp(params) : json(params);    // 判断是否是jsonp  jsonp() json() 两个不同的函数
+            function jsonp(params){}
+            function json(params){    // 委托json函数 发送ajax请求
+                params.type = (params.type || 'GET').toUpperCase();
+                params.data = formatParams(params.data);    // params.data 格式化（format）一下
+                var xhr = null;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                // 发送请求之前
+                xhr.onreadystatechange = function(){   
+                    if(xhr.readyState == 4){     // xhr有四种状态 1234 4是最后一种
+                        var status = xhr.status;    // 状态码
+                        if(status >= 200 && status < 300){   // 200-300 成功
+                            var response = JSON.parse(xhr.responseText);    // 得到ajax返回的请求  返回文本
+                            params.success && params.success(response);   
+                        }
+                    } else{
+                        params.error && params.error(status);    // 出错时调用出错的回调
+                    }
+                }
+
+                if(params.type == 'GET'){
+                    xhr.open(params.type, params.url + '?' + params.data, true);   // 发送异步请求
+                    xhr.send(null);
+                } else{
+                    xhr.open(params.type, params.url, true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');    // 添加请求头部 表单字符集 
+                    xhr.send(params.data);
+                }
+            }
+            function formatParams(data){
+                var arr = [];
+                for(var name in data){
+                    arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));    // encode 编码
+                }
+                // 同一个ajax请求 浏览器会缓存
+                arr.push('v=' + random());
+                return arr.join('&');
+            }
+            function random(){    // 随机数函数
+                return Math.floor(Math.random()*10000 + 500);
+            }
+        }
+        // 同源的ajax请求
+        ajax({
+            type: 'GET',
+            url: '/data.json',
+            data: {
+                name: '曾凯'
+            },
+            success: (data) => { console.log(data) },    // 异步的  成功时回调
+            error: (err) => { console.log(err) }    // 出错的回调
+        })
+    </script>
+    <script>
+        function callback(data){
+            console.log(data);
+        }
+    </script>
+    <script src="http://localhost:3000/api?jsonpcallback=callback">
+        // fetch('http://localhost:3000/api')
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+    </script>
+</body>
+</html>
