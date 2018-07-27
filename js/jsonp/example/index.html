@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-<body>
-</body>
-    <!-- script标签可以访问外部跨域脚本或地址，改造一下后端接口，实现jsonp，json with padding，返回的数据，callback(data)封装一下 callback返回   -->
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         function ajax(params){
             params = params || {};
             params.data = params.data || {};
             var json = params.jsonp ? jsonp(params) : json(params);    // 判断是否是jsonp  jsonp() json() 两个不同的函数
-            function jsonp(params){}
+
+            function jsonp(params){
+                // script 的动态构建  使用DOM手动构建/...
+                var callbackName = params.jsonp;
+                var head = document.getElementsByTagName('head')[0];
+                params.data['jsonpcallback'] = callbackName;
+                var data = formatParams(params.data);
+                var script = document.createElement('script');   // 构建script
+                head.appendChild(script);
+                window[callbackName] = function(json){   // 新建一个全局变量 callbackName  window全局
+                    // head.removeChild(script);   // 移除script标签
+                    // window[callbackName] = null;
+                    params.success && params.success(json);    // 如果有success回调函数 就调用一下success函数
+                }
+                script.src = params.url + '?' + data;        // 访问地址 
+            }
+
             function json(params){    // 委托json函数 发送ajax请求
                 params.type = (params.type || 'GET').toUpperCase();
                 params.data = formatParams(params.data);    // params.data 格式化（format）一下
@@ -61,26 +72,40 @@
             }
         }
         // 同源的ajax请求
+        // ajax({
+        //     type: 'GET',
+        //     url: '/data.json',
+        //     data: {
+        //         name: '曾凯'
+        //     },
+        //     success: (data) => { console.log(data) },    // 异步的  成功时回调
+        //     error: (err) => { console.log(err) }    // 出错的回调
+        // })
+    </script>
+</head>
+<body>
+</body>
+    <!-- script标签可以访问外部跨域脚本或地址，改造一下后端接口，实现jsonp，json with padding，返回的数据，callback(data)封装一下 callback返回   -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+    <script>
         ajax({
-            type: 'GET',
-            url: '/data.json',
-            data: {
-                name: '曾凯'
-            },
-            success: (data) => { console.log(data) },    // 异步的  成功时回调
-            error: (err) => { console.log(err) }    // 出错的回调
+            jsonp: 'jsoncallback',
+            url: 'http://localhost:3000/api',
+            success: function(data){
+                console.log(data);
+            }
         })
     </script>
-    <script>
+    <!-- <script>
         function callback(data){
             console.log(data);
         }
-    </script>
-    <script src="http://localhost:3000/api?jsonpcallback=callback">
+    </script> -->
+    <!-- <script src="http://localhost:3000/api?jsonpcallback=callback">
         // fetch('http://localhost:3000/api')
         //     .then(data => {
         //         console.log(data);
         //     })
-    </script>
+    </script> -->
 </body>
 </html>
