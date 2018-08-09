@@ -21,7 +21,6 @@ function sort() {
       }
     }
   }
-
   return arr;
 }
 const sorted_arr = sort();
