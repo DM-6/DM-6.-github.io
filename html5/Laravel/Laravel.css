@@ -88,11 +88,16 @@ img{
     bottom: -40px;
     border: 1px solid #f1362f;
     background-color: transparent;
+    background-color: 0, 0, 0, 0.2;
 }
 .btn-default {
-    background: #f4645f;
     color: #fff;
     transition: all .2s ease-in-out;
+}
+.btn-default:hover{
+    border: 1px solid #303030;
+    background: #303030;
+    color: #fff;
 }
 .btn {
     padding: 7px 14px;
@@ -191,6 +196,10 @@ ul{
     display: block;
     padding: 0 21px;
 }
+.main-navigation .menu li a:hover{
+    color: #f4645f;
+    text-decoration: none;
+}
 .col-md-8 {
     width: 66.66666667%;
     float: left;
@@ -276,13 +285,176 @@ p {
     word-wrap: break-word;
     text-decoration-color: rgba(0,0,0,.4);
 }
-.btn-default {
+.btn-read{
     border: 1px solid #f4645f;
     background: #f4645f;
     color: #fff;
     transition: all .2s ease-in-out;
 }
-.btn {
-    padding: 7px 14px;
+.pagination {
+    margin: 0 0 35px;
+    text-align: center;
+    display: block;
+    padding-left: 0;
+    border-radius: 4px;
+}
+.pagination .page-number {
+    background: #f4645f;
+    color: #fff;
+    margin: 0 3px;
+    display: inline-block;
+    line-height: 36px;
+    padding: 0 14px;
     border-radius: 2px;
+}
+.pagination a {
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    background: #f4645f;
+    border-radius: 2px;
+}
+.pagination a i {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+}
+.fa-angle-right:before {
+    content: "\f105";
+}
+.sidebar .widget {
+    background: #fff;
+    padding: 21px 30px;
+}
+.widget{
+    margin-bottom: 35px;
+}
+.widget .title {
+    margin-top: 0;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 21px;
+    position: relative;
+}
+h4{
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #303030;
+    font-family: inherit;
+    line-height: 1.1;
+}
+.title:after{
+    content: "";
+    width: 90px;
+    height: 1px;
+    background: #f4645f;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+}
+p{
+    margin: 0 0 10px;
+}
+a:-webkit-any-link {
+    cursor: auto;
+}
+a:hover {
+    color: #f4645f;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    transform: translate(0, 0);
+}
+.fa-comments:before {
+    content: "\f086";
+}
+.btn-block {
+    display: block;
+    width: 100%;
+    border: 1px solid #f4645f;
+    background: #f4645f;
+    color: #fff;
+    transition: all .2s ease-in-out;
+}
+.main-footer {
+    background: #202020;
+    padding: 35px 0 0;
+    color: #959595;
+}
+.col-sm-4{
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.main-footer .widget {
+    padding: 0 30px;
+}
+.main-footer .widget .title {
+    color: #fff;
+    border-bottom: 1px solid #303030;
+}
+.main-footer .widget .recent-post .recent-single-post {
+    border-bottom: 1px dashed #303030;
+}
+.widget .recent-post .recent-single-post {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+}
+.main-footer .widget .recent-post .recent-single-post .post-title {
+    color: #959595;
+}
+.widget .recent-post .recent-single-post .post-title {
+    transition: all .2s ease;
+}
+.main-footer .widget .recent-post .recent-single-post .date {
+    color: #505050;
+}
+.main-footer .widget .tag-cloud a {
+    border: 1px solid #303030;
+}
+.widget .tag-cloud a {
+    padding: 2px 7px;
+    color: #959595;
+    line-height: 1.5em;
+    display: inline-block;
+    margin: 0 7px 7px 0;
+    transition: all .2s ease;
+}
+.main-footer .widget .friend-links a {
+    border: none;
+}
+.main-footer .widget .friend-links a:hover {
+    text-decoration: none;
+    background-color: #f4645f;
+    color: #fff;
+}
+.main-footer .widget .friend-links hr {
+    margin: 1em 0;
+    border-top: 1px dashed #303030;
+}
+.copyright {
+    background: #111;
+    font-size: 13px;
+    text-align: center;
+    color: #555;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px solid #303030;
+}
+.col-sm-12{
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.copyright span {
+    margin: 0 .5em;
+}
+.copyright a {
+    color: #555;
 }
